@@ -13,13 +13,21 @@ let matchedCards = [];
 let openedCards =[];
 let movesCount = 0;
 let starsNo = 3;
+let gameTimer = document.getElementById('timer');
+let s = 0 , m = 0 , timeStarts = true;
 
 //initiate the game 
 shuffle(cardList);
 for (let i = 0; i<cardsArray.length;i++){
 	cardsArray[i].innerHTML = '<i></i>';
 	cardsArray[i].firstElementChild.className = cardList[i];
-	};
+};
+
+//Adding event for starting the Game time.
+for(let i = 0 ; i< cards.length;i++){
+	cards[i].addEventListener('click',runTime);
+}
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -90,7 +98,44 @@ function matchCard(){
 function countMoves (){
 	movesCount++;
 	moves.textContent = (movesCount);
+	//Removing the event for the function runTime.
+	if (movesCount === 1){
+		for(let i = 0 ; i< cards.length;i++){
+			cards[i].removeEventListener('click',runTime);
+		}
+	}
 }
+
+//function runTime
+function runTime(){
+	setInterval('timeCount()',1000);
+}
+/*
+//stop the timer function.
+
+function stopTime (){
+	timeStarts == false ;
+}
+*/
+function timeCount(){
+	if(timeStarts == true){
+		s.value = s;
+		m.value = m;
+
+		s++;
+
+		if(s == 60){
+			m++;
+			s = 0;
+		}
+	}else{
+		s = 0;
+		m = 0;
+	}
+	gameTimer.innerHTML = 'Time: ' + m + ' min ' + s + ' sec';
+}
+
+
 // When winning the game 
 function gameWin(){
 	let gameFinish = document.querySelector('.no-win');
@@ -98,12 +143,15 @@ function gameWin(){
 	let finalMoves = document.querySelector('#countNumber');
 	let finalRating = document.querySelector('#finalStars');
 	let restartButton = document.querySelector('#restartButton');
+	let finalTime = document.querySelector('#finalTime');
+	let gameTime = m + 'min' + s + 'sec';
 //I choosed to have the final results div in the HTML but be hidden until the condition is fulfilled
 	gameFinish.classList.toggle('no-win');
 	gameFinish.classList.toggle('win');
 	container.style.display = 'none';
 	finalMoves.textContent = (movesCount);
 	finalRating.textContent = (starsNo);
+	finalTime.textContent = (gameTime);
 
 	restartButton.addEventListener('click',function(){
 		window.location.reload();
@@ -120,16 +168,10 @@ function rating(){
 		starsNo = 1;
 	}
 }
+
 repeatButton.addEventListener('click', function(){
-	shuffle(cardList);
-	for (let i = 0; i<cardsArray.length;i++){
-	cardsArray[i].classList.remove('match','open','not-matched');
-	cardsArray[i].innerHTML = '<i></i>';
-	cardsArray[i].firstElementChild.className = cardList[i];
 	
-	}
-	openedCards.length = 0;
-	movesCount = 0;
+	window.location.reload();
 	
 });
 
