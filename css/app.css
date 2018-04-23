@@ -153,4 +153,13 @@ h1 {
     .score-panel {
         width: 245px;
     }
+    .deck .card.open {
+        font-size: 20px;
+    }
+    .deck .card.match {
+        font-size: 20px;
+    }
+    .deck .card.not-matched {
+        font-size: 20px;
+    }
 }
