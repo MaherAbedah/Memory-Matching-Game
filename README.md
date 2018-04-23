@@ -6,7 +6,7 @@
 * [Installation](#Installation)
 * [Instructions](#Instructions)
 * [How-to-play](#How-to-play)
-
+* [Dependencies](#Dependencies)
 ## Installation
 
 Clone the repository to your local device, start by launching the index.html file   
@@ -29,6 +29,8 @@ you need to flip the cards by clicking on them and find the cards that match,
 the time will start once you click the first card.
 you can reload the game using the reload button which will reset the values of timer and moves, and shuffle the cards.
 
-
-
+## Dependencies
+* Font Awesome
+* Bootstrap
+* Googleapis
 

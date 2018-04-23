@@ -56,8 +56,10 @@ function matchCard(){
 	if(targetList.nodeName === 'LI' && targetList.classList.contains('match') === false){ //To make sure clicks outside the card are not counted
 		if (openedCards.length === 0 && targetList.className === 'card open'){            //and clicking the matched cards don't count.
 			openedCards[0] = targetList;//filling the openedCards array with first clicked element
+			countMoves();
 		}else if(openedCards.length === 1 && targetList.className === 'card open' && targetList!== openedCards[0]){
 			openedCards[1] = targetList;//adding the second element to the array after confirming the click was on another card
+			countMoves();
 		}
 			
 		if (openedCards.length === 2){
@@ -91,7 +93,7 @@ function matchCard(){
 				}
 			}
 		}
-		countMoves();
+		//countMoves();
 	}
 }
 // To count the moves
