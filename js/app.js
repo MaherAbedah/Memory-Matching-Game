@@ -53,8 +53,8 @@ function matchCard(){
 	let openedCardsNo = openedCards.length;
 	let matchedCardsNo = matchedCards.length;
 	let targetList = event.target;
-	if(targetList.nodeName === 'LI'){ //To make sure clicks outside the card are not counted
-		if (openedCards.length === 0 && targetList.className === 'card open'){
+	if(targetList.nodeName === 'LI' && targetList.classList.contains('match') === false){ //To make sure clicks outside the card are not counted
+		if (openedCards.length === 0 && targetList.className === 'card open'){            //and clicking the matched cards don't count.
 			openedCards[0] = targetList;//filling the openedCards array with first clicked element
 		}else if(openedCards.length === 1 && targetList.className === 'card open' && targetList!== openedCards[0]){
 			openedCards[1] = targetList;//adding the second element to the array after confirming the click was on another card
@@ -96,6 +96,7 @@ function matchCard(){
 }
 // To count the moves
 function countMoves (){
+	
 	movesCount++;
 	moves.textContent = (movesCount);
 	//Removing the event for the function runTime.
