@@ -11,6 +11,7 @@
 Clone the repository to your local device, start by launching the index.html file   
 
 or you can use the online version on the folowing link:
+https://maherabedah.github.io/Memory-Matching-Game/
 
 
 ## Instructions
