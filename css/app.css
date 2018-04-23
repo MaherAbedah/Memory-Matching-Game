@@ -138,3 +138,19 @@ h1 {
     cursor: pointer;
     font-size: 1.5em;
 }
+
+@media screen and (max-width: 679px) {
+    .deck {
+    width: 280px;
+    min-height: 320px;
+    padding: 16px;
+    }
+    .deck .card {
+    height: 50px;
+    width: 50px;
+    border-radius: 6px;
+    }
+    .score-panel {
+        width: 245px;
+    }
+}
